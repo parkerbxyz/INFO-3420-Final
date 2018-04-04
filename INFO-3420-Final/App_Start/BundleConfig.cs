@@ -25,6 +25,7 @@ namespace INFO_3420_Final
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/fontawesome-all.css",
                       "~/Content/site.css"));
         }
     }
