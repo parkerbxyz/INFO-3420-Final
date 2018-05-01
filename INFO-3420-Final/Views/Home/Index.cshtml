@@ -3,25 +3,28 @@
 }
 
 <div class="jumbotron">
-    <h1><img src="~/Content/Images/logo.svg" /></h1>
-    <p class="lead">Insert clever tagline here.</p>
-    <p><a href="About" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <div class="img-responsive" style="max-width: 400px">
+            @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/Images/logo.svg")))
+        </div>
+    <br />
+    <p><a href="~/Home/About" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4 text-center">
-        <h1><i class="fas fa-donate fa-2x"></i></h1>
-        <h4>Donate today</h4>
-        <p>Help a family in need.</p>
+        
+        <h1><i class="fas fa-shipping-fast fa-2x"></i></h1>
+        <h4>Send us your soles</h4>
+        <p>Send your gently used shoes directly to us!</p>
     </div>
     <div class="col-md-4 text-center">
         <h1><i class="fas fa-map fa-2x"></i></h1>
-        <h4>Select a city</h4>
-        <p>Find your nearest donation center</p>
+        <h4>Find a drop-off location</h4>
+        <p>Bring your gently used shoes to one of our convenient drop-off locations.</p>
     </div>
     <div class="col-md-4 text-center">
-        <h1><i class="fa fa-exchange fa-2x"></i></h1>
-        <h4>Enjoy the ride!</h4>
-        <p>Go anywhere you want to go!</p>
+        <h1><i class="fas fa-donate fa-2x"></i></h1>
+        <h4>Donate today</h4>
+        <p>Help a family in need.</p>
     </div>
 </div>
