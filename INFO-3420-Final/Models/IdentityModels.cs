@@ -18,6 +18,22 @@ namespace INFO_3420_Final.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        public string Address { get; set; }
+
+        public string City { get; set; }
+
+        public string State { get; set; }
+
+        [Display(Name = "Postal Code")]
+        [DataType(DataType.PostalCode)]
+        public string PostalCode { get; set; }
+
+        public string Country { get; set; }
+
+        [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        public string Phone { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -38,5 +54,13 @@ namespace INFO_3420_Final.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<INFO_3420_Final.Models.Donation> Donations { get; set; }
+
+        public System.Data.Entity.DbSet<INFO_3420_Final.Models.Location> Locations { get; set; }
+
+        public System.Data.Entity.DbSet<INFO_3420_Final.Models.Shipment> Shipments { get; set; }
+
+        public System.Data.Entity.DbSet<INFO_3420_Final.Models.Partner> Partners { get; set; }
     }
 }

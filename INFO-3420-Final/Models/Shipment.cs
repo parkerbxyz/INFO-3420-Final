@@ -40,6 +40,8 @@ namespace INFO_3420_Final.Models
         [DataType(DataType.PostalCode)]
         public string PostalCode { get; set; }
 
+        public string Country { get; set; }
+
         [Required]
         [Display(Name = "Phone Number")]
         [DataType(DataType.PhoneNumber)]
@@ -49,8 +51,5 @@ namespace INFO_3420_Final.Models
         [Display(Name = "Email Address")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-
-        [Range(0.00, 9999.99)]
-        public decimal Total { get; set; }
     }
 }

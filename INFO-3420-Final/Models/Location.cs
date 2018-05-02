@@ -8,17 +8,14 @@ namespace INFO_3420_Final.Models
 {
     public class Location
     {
+        public int LocationId { get; set; }
+        public Partner Partner { get; set; }
+
+        [Display(Name = "Partner")]
+        public int PartnerId { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
-
-        public Location(string address, string city, string state, int zip)
-        {
-            Address = address;
-            City = city;
-            State = state;
-            Zip = zip;
-        }
     }
 }

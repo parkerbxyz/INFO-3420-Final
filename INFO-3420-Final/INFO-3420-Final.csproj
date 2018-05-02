@@ -188,14 +188,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PartnersController.cs" />
+    <Compile Include="Controllers\ShipmentsController.cs" />
+    <Compile Include="Extensions\DbSetExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContextInitializer.cs" />
     <Compile Include="Models\Donation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Partner.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Shipment.cs" />
@@ -299,6 +306,27 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Shipments\Create.cshtml" />
+    <Content Include="Views\Shipments\Delete.cshtml" />
+    <Content Include="Views\Shipments\Details.cshtml" />
+    <Content Include="Views\Shipments\Edit.cshtml" />
+    <Content Include="Views\Shipments\Index.cshtml" />
+    <Content Include="Views\Partners\Create.cshtml" />
+    <Content Include="Views\Partners\Delete.cshtml" />
+    <Content Include="Views\Partners\Details.cshtml" />
+    <Content Include="Views\Partners\Edit.cshtml" />
+    <Content Include="Views\Partners\Index.cshtml" />
+    <Content Include="Views\Locations\EditorTemplates\Location.cshtml" />
+    <Content Include="Views\Donations\Create.cshtml" />
+    <Content Include="Views\Donations\Delete.cshtml" />
+    <Content Include="Views\Donations\Details.cshtml" />
+    <Content Include="Views\Donations\Edit.cshtml" />
+    <Content Include="Views\Donations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
