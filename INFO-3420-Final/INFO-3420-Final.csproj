@@ -327,6 +327,8 @@
     <Content Include="Views\Donations\Details.cshtml" />
     <Content Include="Views\Donations\Edit.cshtml" />
     <Content Include="Views\Donations\Index.cshtml" />
+    <Content Include="Views\Partners\Search.cshtml" />
+    <Content Include="Views\Locations\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

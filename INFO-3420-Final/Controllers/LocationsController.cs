@@ -17,7 +17,14 @@ namespace INFO_3420_Final.Controllers
         // GET: Locations
         public ActionResult Index()
         {
-            return View(db.Locations.Include(p=>p.Partner).ToList());
+            return View(db.Locations.Include(p=>p.Partner).OrderBy(s => s.Zip).ToList());
+        }
+
+        // Search
+        public ActionResult Search(string location)
+        {
+            List<Location> locationList = db.Locations.Where(x => x.Address.Contains(location) || x.City.Contains(location) || x.Partner.Name.Contains(location) || x.State.Contains(location) || x.Zip.Contains(location)).ToList();
+            return View(locationList);
         }
 
         // GET: Locations/Details/5

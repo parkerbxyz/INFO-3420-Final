@@ -13,9 +13,12 @@ namespace INFO_3420_Final.Models
 
         [Display(Name = "Partner")]
         public int PartnerId { get; set; }
+
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int Zip { get; set; }
+
+        [DataType(DataType.PostalCode)]
+        public string Zip { get; set; }
     }
 }

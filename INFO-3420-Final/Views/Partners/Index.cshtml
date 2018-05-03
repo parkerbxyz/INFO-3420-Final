@@ -1,14 +1,23 @@
 ﻿@model IEnumerable<INFO_3420_Final.Models.Partner>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Partners";
 }
 
-<h2>Index</h2>
+<h2>Partners</h2>
+
+<hr />
+@using (Html.BeginForm("Search", "Partners", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <input type="text" class="form-control" name="partner" placeholder="Search Partners" />
+    <input type="submit" class="btn btn-default" value="Search" />
+}
+<hr />
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -17,17 +26,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PartnerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PartnerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PartnerId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PartnerId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PartnerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PartnerId })
+            </td>
+        </tr>
+    }
 
 </table>

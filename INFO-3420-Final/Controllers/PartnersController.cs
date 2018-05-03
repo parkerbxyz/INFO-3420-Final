@@ -20,6 +20,13 @@ namespace INFO_3420_Final.Controllers
             return View(db.Partners.ToList());
         }
 
+        // Search
+        public ActionResult Search(string partner)
+        {
+            List<Partner> partnerList = db.Partners.Where(x => x.Name.Contains(partner)).ToList();
+            return View(partnerList);
+        }
+
         // GET: Partners/Details/5
         public ActionResult Details(int? id)
         {
