@@ -10,46 +10,22 @@ namespace INFO_3420_Final.Models
     {
         public int ShipmentId { get; set; }
 
-        [Required]
-        [Display(Name = "Date")]
-        public DateTime Date { get; set; }
-
-        public string Username { get; set; }
+        public ApplicationUser User { get; set; }
+        public string UserId { get; set; }
 
         [Required]
-        [Display(Name = "First Name")]
-        [StringLength(100, MinimumLength = 2)]
-        public string FirstName { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Label Created")]
+        public DateTime LabelDate { get; set; }
 
         [Required]
-        [Display(Name = "Last Name")]
-        [StringLength(100, MinimumLength = 2)]
-        public string LastName { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Ship By")]
+        public DateTime ShipByDate { get; set; }
 
-        [Required]
-        public string Address { get; set; }
+        [Display(Name = "Tracking Number")]
+        public string TrackingNumber { get; set; }
 
-        [Required]
-        public string City { get; set; }
-
-        [Required]
-        public string State { get; set; }
-
-        [Required]
-        [Display(Name = "Postal Code")]
-        [DataType(DataType.PostalCode)]
-        public string PostalCode { get; set; }
-
-        public string Country { get; set; }
-
-        [Required]
-        [Display(Name = "Phone Number")]
-        [DataType(DataType.PhoneNumber)]
-        public string Phone { get; set; }
-
-        [Required]
-        [Display(Name = "Email Address")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string Status { get; set; }
     }
 }

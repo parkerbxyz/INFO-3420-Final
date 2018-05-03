@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using INFO_3420_Final.Models;
+using Microsoft.AspNet.Identity;
 
 namespace INFO_3420_Final.Controllers
 {
@@ -18,7 +19,8 @@ namespace INFO_3420_Final.Controllers
         // GET: Shipments
         public ActionResult Index()
         {
-            return View(db.Shipments.ToList());
+            var shipments = db.Shipments.Include(s => s.User);
+            return View(shipments.ToList());
         }
 
         // GET: Shipments/Details/5
@@ -39,6 +41,7 @@ namespace INFO_3420_Final.Controllers
         // GET: Shipments/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
@@ -47,7 +50,7 @@ namespace INFO_3420_Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShipmentId,Date,Username,FirstName,LastName,Address,City,State,PostalCode,Country,Phone,Email")] Shipment shipment)
+        public ActionResult Create([Bind(Include = "ShipmentId,UserId,LabelDate,ShipByDate,TrackingNumber,Status")] Shipment shipment)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +59,7 @@ namespace INFO_3420_Final.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", shipment.UserId);
             return View(shipment);
         }
 
@@ -71,6 +75,7 @@ namespace INFO_3420_Final.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", shipment.UserId);
             return View(shipment);
         }
 
@@ -79,7 +84,7 @@ namespace INFO_3420_Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShipmentId,Date,Username,FirstName,LastName,Address,City,State,PostalCode,Country,Phone,Email")] Shipment shipment)
+        public ActionResult Edit([Bind(Include = "ShipmentId,UserId,LabelDate,ShipByDate,TrackingNumber,Status")] Shipment shipment)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +92,7 @@ namespace INFO_3420_Final.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", shipment.UserId);
             return View(shipment);
         }
 

@@ -52,7 +52,7 @@ namespace INFO_3420_Final.Controllers
         {
             if (ModelState.IsValid)
             {
-                donation.ApplicationUserId = User.Identity.GetUserId();
+                donation.UserId = User.Identity.GetUserId();
                 db.Donations.Add(donation);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -15,7 +15,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.DonationId)
-        @Html.HiddenFor(m => m.ApplicationUserId)
+        @Html.HiddenFor(m => m.UserId)
 
         <div class="form-group">
             @Html.LabelFor(model => model.DonationDate, htmlAttributes: new { @class = "control-label col-md-2" })

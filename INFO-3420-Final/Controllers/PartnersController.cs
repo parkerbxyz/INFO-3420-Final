@@ -17,7 +17,7 @@ namespace INFO_3420_Final.Controllers
         // GET: Partners
         public ActionResult Index()
         {
-            return View(db.Partners.ToList());
+            return View(db.Partners.OrderBy(s => s.Name).ToList());
         }
 
         // Search

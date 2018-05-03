@@ -10,10 +10,11 @@ namespace INFO_3420_Final.Models
     {
         public int DonationId { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
-        public string ApplicationUserId { get; set; }
+        public ApplicationUser User { get; set; }
+        public string UserId { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Donation Date")]
         public DateTime DonationDate { get; set; }
 
