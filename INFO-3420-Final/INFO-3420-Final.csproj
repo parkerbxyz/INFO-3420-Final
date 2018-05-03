@@ -224,7 +224,10 @@
     <Content Include="Content\fontawesome-all.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\Images\chucks-classic-converse-267202.jpg" />
     <Content Include="Content\Images\logo.svg" />
+    <Content Include="Content\Images\man-holding-shipping-box-on-red-brick_925x.jpg" />
+    <Content Include="Content\Images\saving-cash-in-bank_925x.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

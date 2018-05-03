@@ -3,28 +3,28 @@
 }
 
 <div class="jumbotron">
-        <div class="img-responsive" style="max-width: 400px">
-            @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/Images/logo.svg")))
-        </div>
+    <div class="img-responsive" style="max-width: 400px">
+        @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/Images/logo.svg")))
+    </div>
+    <p class="lead">Don't sell your soles - donate today to help someone in need!</p>
     <br />
     <p><a href="~/Home/About" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4 text-center">
-        
-        <h1><i class="fas fa-shipping-fast fa-2x"></i></h1>
-        <h4>Send us your soles</h4>
-        <p>Send your gently used shoes directly to us!</p>
-    </div>
-    <div class="col-md-4 text-center">
         <h1><i class="fas fa-map fa-2x"></i></h1>
         <h4>Find a drop-off location</h4>
-        <p>Bring your gently used shoes to one of our convenient drop-off locations.</p>
+        <p>Bring your new or gently used shoes to one of our convenient drop-off locations.</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <h1><i class="fas fa-shipping-fast fa-2x"></i></h1>
+        <h4>Send us your soles</h4>
+        <p>Send your new or gently used shoes directly to us! We'll cover the shipping costs.</p>
     </div>
     <div class="col-md-4 text-center">
         <h1><i class="fas fa-donate fa-2x"></i></h1>
         <h4>Donate today</h4>
-        <p>Help a family in need.</p>
+        <p>Cash donations go towards operating costs and the purchase of new shoes for children in need.</p>
     </div>
 </div>

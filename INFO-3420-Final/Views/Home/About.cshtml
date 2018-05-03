@@ -2,6 +2,41 @@
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title Secondhand Shoes</h2>
-<h3>@ViewBag.Message</h3>
+<br />
+<h3>Who we are</h3>
+<p>Secondhand Shoes is nonprofit organization based in Orem, UT. Our mission is to provide a new or gently used pair of shoes to those in our community who may otherwise go without. This is especially important here in Utah with our cold, harsh winters.</p>
+<br />
+<h3>How to contribute</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img class="img-responsive" src="~/Content/Images/chucks-classic-converse-267202.jpg" alt="shoes in a basket">
+            <div class="caption">
+                <h3>Local drop-off</h3>
+                <p>Do you have a pair of new or gently used sneakers you could spare? Drop them off with one of our local partners and they will take care of the rest.</p>
+                <p><a href="~/Locations" class="btn btn-primary" role="button">Find a drop-off location &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="~/Content/Images/man-holding-shipping-box-on-red-brick_925x.jpg" alt="shoes in a basket">
+            <div class="caption">
+                <h3>Shipping on us</h3>
+                <p>Don't live near a drop-off location? We will provide a prepaid shippping label that you can use to ship your shoes directly to our warehouse.</p>
+                <p><a href="~/Shipments" class="btn btn-primary" role="button">Send us your soles &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="~/Content/Images/saving-cash-in-bank_925x.jpg" alt="shoes in a basket">
+            <div class="caption">
+                <h3>Cash donation</h3>
+                <p>Don't have a pair of shoes to donate? We accept cash donations! Donations will be used to purchase new shoes for economically disadvantaged children.</p>
+                <p><a href="~/Donations" class="btn btn-primary" role="button">Donate today &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
