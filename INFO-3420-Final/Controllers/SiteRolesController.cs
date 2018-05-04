@@ -11,120 +11,107 @@ using INFO_3420_Final.Models;
 namespace INFO_3420_Final.Controllers
 {
     [Authorize]
-    public class PartnersController : Controller
+    public class SiteRolesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Partners
-        [AllowAnonymous]
+        // GET: SiteRoles
         public ActionResult Index()
         {
-            return View(db.Partners.OrderBy(s => s.Name).ToList());
+            return View(db.SiteRoles.ToList());
         }
 
-        // Search
-        [AllowAnonymous]
-        public ActionResult Search(string partner)
-        {
-            List<Partner> partnerList = db.Partners.Where(x => x.Name.Contains(partner)).ToList();
-            return View(partnerList);
-        }
-
-        // GET: Partners/Details/5
-        [AllowAnonymous]
+        // GET: SiteRoles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Partner partner = db.Partners.Include(p => p.Locations).SingleOrDefault(p => p.PartnerId == id);
-            if (partner == null)
+            SiteRole siteRole = db.SiteRoles.Find(id);
+            if (siteRole == null)
             {
                 return HttpNotFound();
             }
-            return View(partner);
+            return View(siteRole);
         }
 
-        // GET: Partners/Create
-        [Authorize(Roles = "Admin")]
+        // GET: SiteRoles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Partners/Create
+        // POST: SiteRoles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PartnerId,Name")] Partner partner)
+        public ActionResult Create([Bind(Include = "SiteRoleId,SiteRoleName")] SiteRole siteRole)
         {
             if (ModelState.IsValid)
             {
-                db.Partners.Add(partner);
+                db.SiteRoles.Add(siteRole);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(partner);
+            return View(siteRole);
         }
 
-        // GET: Partners/Edit/5
-        [Authorize(Roles = "Admin")]
+        // GET: SiteRoles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Partner partner = db.Partners.Find(id);
-            if (partner == null)
+            SiteRole siteRole = db.SiteRoles.Find(id);
+            if (siteRole == null)
             {
                 return HttpNotFound();
             }
-            return View(partner);
+            return View(siteRole);
         }
 
-        // POST: Partners/Edit/5
+        // POST: SiteRoles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PartnerId,Name")] Partner partner)
+        public ActionResult Edit([Bind(Include = "SiteRoleId,SiteRoleName")] SiteRole siteRole)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(partner).State = EntityState.Modified;
+                db.Entry(siteRole).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(partner);
+            return View(siteRole);
         }
 
-        // GET: Partners/Delete/5
-        [Authorize(Roles = "Admin")]
+        // GET: SiteRoles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Partner partner = db.Partners.Find(id);
-            if (partner == null)
+            SiteRole siteRole = db.SiteRoles.Find(id);
+            if (siteRole == null)
             {
                 return HttpNotFound();
             }
-            return View(partner);
+            return View(siteRole);
         }
 
-        // POST: Partners/Delete/5
+        // POST: SiteRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Partner partner = db.Partners.Find(id);
-            db.Partners.Remove(partner);
+            SiteRole siteRole = db.SiteRoles.Find(id);
+            db.SiteRoles.Remove(siteRole);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

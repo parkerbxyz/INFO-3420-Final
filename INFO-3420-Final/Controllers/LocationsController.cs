@@ -10,23 +10,27 @@ using INFO_3420_Final.Models;
 
 namespace INFO_3420_Final.Controllers
 {
+    [Authorize]
     public class LocationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [AllowAnonymous]
         // GET: Locations
         public ActionResult Index()
         {
             return View(db.Locations.Include(p=>p.Partner).OrderBy(s => s.Zip).ToList());
         }
 
+        [AllowAnonymous]
         // Search
         public ActionResult Search(string location)
         {
-            List<Location> locationList = db.Locations.Where(x => x.Address.Contains(location) || x.City.Contains(location) || x.Partner.Name.Contains(location) || x.State.Contains(location) || x.Zip.Contains(location)).ToList();
+            List<Location> locationList = db.Locations.Include(p => p.Partner).Where(x => x.Address.Contains(location) || x.City.Contains(location) || x.Partner.Name.Contains(location) || x.State.Contains(location) || x.Zip.Contains(location)).ToList();
             return View(locationList);
         }
 
+        [AllowAnonymous]
         // GET: Locations/Details/5
         public ActionResult Details(int? id)
         {
@@ -43,6 +47,7 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Locations/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.Partners = db.Partners.ToSelectList();
@@ -68,6 +73,7 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Locations/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,6 +109,7 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Locations/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

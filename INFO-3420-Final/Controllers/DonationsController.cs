@@ -19,7 +19,39 @@ namespace INFO_3420_Final.Controllers
         // GET: Donations
         public ActionResult Index()
         {
-            return View(db.Donations.ToList());
+            var donations = db.Donations.Include(s => s.User);
+
+            if (!User.IsInRole("Admin"))
+            {
+                string userId = User.Identity.GetUserId();
+                donations = donations.Where(p => p.UserId == userId);
+            }
+
+            return View(donations.ToList());
+        }
+
+        // GET: Donate
+        public ActionResult Donate()
+        {
+            return View();
+        }
+
+        // POST: Donations/Donate
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Donate(Donation donation)
+        {
+            if (ModelState.IsValid)
+            {
+                donation.UserId = User.Identity.GetUserId();
+                db.Donations.Add(donation);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(donation);
         }
 
         // GET: Donations/Details/5
@@ -38,10 +70,12 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Donations/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
+
 
         // POST: Donations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -62,6 +96,7 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Donations/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -93,6 +128,7 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Donations/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

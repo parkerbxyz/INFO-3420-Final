@@ -10,6 +10,10 @@ namespace INFO_3420_Final.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public int SiteRoleId { get; set; }
+
+        public SiteRole SiteRole { get; set; }
+
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -62,5 +66,7 @@ namespace INFO_3420_Final.Models
         public System.Data.Entity.DbSet<INFO_3420_Final.Models.Shipment> Shipments { get; set; }
 
         public System.Data.Entity.DbSet<INFO_3420_Final.Models.Partner> Partners { get; set; }
+
+        public System.Data.Entity.DbSet<INFO_3420_Final.Models.SiteRole> SiteRoles { get; set; }
     }
 }

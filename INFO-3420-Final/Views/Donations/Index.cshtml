@@ -7,10 +7,14 @@
 <h2>Donations</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Donate", "Donate", null, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
+        <th>
+            Username
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.DonationDate)
         </th>
@@ -23,15 +27,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @item.User.UserName
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.DonationDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DonationId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DonationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DonationId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.DonationId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.DonationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.DonationId })
         </td>
     </tr>
 }

@@ -20,6 +20,13 @@ namespace INFO_3420_Final.Controllers
         public ActionResult Index()
         {
             var shipments = db.Shipments.Include(s => s.User);
+
+            if (!User.IsInRole("Admin"))
+            {
+                string userId = User.Identity.GetUserId();
+                shipments = shipments.Where(p => p.UserId == userId);
+            }
+
             return View(shipments.ToList());
         }
 
@@ -38,7 +45,32 @@ namespace INFO_3420_Final.Controllers
             return View(shipment);
         }
 
+        // GET: Shipments/RequestLabel
+        public ActionResult RequestLabel()
+        {
+            return View();
+        }
+
+        // POST: Shipments/RequestLabel
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RequestLabel (Shipment shipment)
+        {
+            if (ModelState.IsValid)
+            {
+                shipment.UserId = User.Identity.GetUserId();
+                db.Shipments.Add(shipment);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(shipment);
+        }
+
         // GET: Shipments/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
@@ -50,7 +82,7 @@ namespace INFO_3420_Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShipmentId,UserId,LabelDate,ShipByDate,TrackingNumber,Status")] Shipment shipment)
+        public ActionResult Create([Bind(Include = "ShipmentId,UserId,LabelDate,ShipByDate,TrackingNumber,ShoeSize,Notes,Status")] Shipment shipment)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +96,7 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Shipments/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,7 +117,7 @@ namespace INFO_3420_Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShipmentId,UserId,LabelDate,ShipByDate,TrackingNumber,Status")] Shipment shipment)
+        public ActionResult Edit(Shipment shipment)
         {
             if (ModelState.IsValid)
             {
@@ -97,6 +130,7 @@ namespace INFO_3420_Final.Controllers
         }
 
         // GET: Shipments/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
